@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:intl/intl.dart';
 
 final color1 = Color(0xFF282A34);
 final color2 = Color(0XFF3C3F51);
@@ -38,93 +39,92 @@ class HomePage extends StatelessWidget {
 class WidgetNavigationDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Container(
-        color: color1,
-        height: double.infinity,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            _buildWidgetInstagramLogo(),
-            SizedBox(height: 24),
-            _buildWidgetPhotoProfile(),
-            SizedBox(height: 16),
-            Center(
-              child: Text(
-                'Hello Ditta',
-                style: Theme.of(context).textTheme.headline6.copyWith(
-                      color: Colors.white,
-                      fontFamily: fontFamilyAvenir,
-                    ),
-              ),
+    return Container(
+      color: color1,
+      width: 300,
+      height: double.infinity,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          _buildWidgetInstagramLogo(),
+          SizedBox(height: 24),
+          _buildWidgetPhotoProfile(),
+          SizedBox(height: 16),
+          Center(
+            child: Text(
+              'Hello Ditta',
+              style: Theme.of(context).textTheme.headline6.copyWith(
+                    color: Colors.white,
+                    fontFamily: fontFamilyAvenir,
+                  ),
             ),
-            Center(
-              child: Text(
-                '@helloditta',
-                style: Theme.of(context).textTheme.bodyText2.copyWith(
-                      fontFamily: fontFamilyAvenir,
-                      color: Colors.grey,
-                    ),
-              ),
+          ),
+          Center(
+            child: Text(
+              '@helloditta',
+              style: Theme.of(context).textTheme.bodyText2.copyWith(
+                    fontFamily: fontFamilyAvenir,
+                    color: Colors.grey,
+                  ),
             ),
-            SizedBox(height: 16),
-            _buildWidgetInfoPostsFollowersFollowing(context),
-            SizedBox(height: 24),
-            _buildWidgetItemMenu(
-              context,
-              'Feed',
-              Icons.dashboard_outlined,
-              isSelected: true,
+          ),
+          SizedBox(height: 16),
+          _buildWidgetInfoPostsFollowersFollowing(context),
+          SizedBox(height: 24),
+          _buildWidgetItemMenu(
+            context,
+            'Feed',
+            Icons.dashboard_outlined,
+            isSelected: true,
+          ),
+          _buildWidgetItemMenu(
+            context,
+            'Explore',
+            Icons.search,
+          ),
+          _buildWidgetItemMenu(
+            context,
+            'Notifications',
+            Icons.notifications,
+            badge: 4,
+          ),
+          _buildWidgetItemMenu(
+            context,
+            'Direct',
+            Icons.near_me,
+            badge: 1,
+          ),
+          _buildWidgetItemMenu(
+            context,
+            'IG TV',
+            Icons.tv,
+          ),
+          _buildWidgetItemMenu(
+            context,
+            'Stats',
+            Icons.bar_chart,
+          ),
+          _buildWidgetItemMenu(
+            context,
+            'Settings',
+            Icons.settings,
+          ),
+          SizedBox(height: 16),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 24.0),
+            child: Container(
+              width: double.infinity,
+              height: 0.5,
+              color: Colors.grey,
             ),
-            _buildWidgetItemMenu(
-              context,
-              'Explore',
-              Icons.search,
-            ),
-            _buildWidgetItemMenu(
-              context,
-              'Notifications',
-              Icons.notifications,
-              badge: 4,
-            ),
-            _buildWidgetItemMenu(
-              context,
-              'Direct',
-              Icons.near_me,
-              badge: 1,
-            ),
-            _buildWidgetItemMenu(
-              context,
-              'IG TV',
-              Icons.tv,
-            ),
-            _buildWidgetItemMenu(
-              context,
-              'Stats',
-              Icons.bar_chart,
-            ),
-            _buildWidgetItemMenu(
-              context,
-              'Settings',
-              Icons.settings,
-            ),
-            SizedBox(height: 16),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24.0),
-              child: Container(
-                width: double.infinity,
-                height: 0.5,
-                color: Colors.grey,
-              ),
-            ),
-            SizedBox(height: 16),
-            _buildWidgetItemMenu(
-              context,
-              'Logout',
-              Icons.logout,
-            ),
-          ],
-        ),
+          ),
+          SizedBox(height: 16),
+          _buildWidgetItemMenu(
+            context,
+            'Logout',
+            Icons.logout,
+          ),
+        ],
       ),
     );
   }
@@ -350,7 +350,6 @@ class WidgetContent extends StatelessWidget {
     var mediaQueryData = MediaQuery.of(context);
     var widthScreen = mediaQueryData.size.width;
     return Expanded(
-      flex: 4,
       child: Container(
         color: color2,
         height: double.infinity,
@@ -387,6 +386,7 @@ class WidgetContent extends StatelessWidget {
             WidgetStories(),
             SizedBox(height: 32),
             _buildWidgetTitleFeedLatestPopular(context),
+            SizedBox(height: 24),
             WidgetFeed(),
           ],
         ),
@@ -784,37 +784,39 @@ class ItemStory {
 
 class WidgetFeed extends StatelessWidget {
   final listFeeds = <ItemFeed>[
-    ItemFeed('Grissham', 'assets/images/photo_profile_user_11.jpg', 'assets/images/photo_profile_user_11.jpg', 10, 2),
-    ItemFeed('Agatha', 'assets/images/photo_profile_user_2.jpg', 'assets/images/photo_profile_user_2.jpg', 10, 2),
-    ItemFeed('Emily', 'assets/images/photo_profile_user_10.jpg', 'assets/images/photo_profile_user_10.jpg', 10, 2),
-    ItemFeed('Amanda', 'assets/images/photo_profile_user_3.jpg', 'assets/images/photo_profile_user_3.jpg', 10, 2),
-    ItemFeed('Elizabeth', 'assets/images/photo_profile_user_9.jpg', 'assets/images/photo_profile_user_9.jpg', 10, 2),
-    ItemFeed('Aland', 'assets/images/photo_profile_user_13.jpg', 'assets/images/photo_profile_user_13.jpg', 10, 2),
-    ItemFeed('Daroll', 'assets/images/photo_profile_user_16.jpg', 'assets/images/photo_profile_user_16.jpg', 10, 2),
-    ItemFeed('Amelia', 'assets/images/photo_profile_user_4.jpg', 'assets/images/photo_profile_user_4.jpg', 10, 2),
-    ItemFeed('Belinda', 'assets/images/photo_profile_user_5.jpg', 'assets/images/photo_profile_user_5.jpg', 10, 2),
-    ItemFeed('Caroline', 'assets/images/photo_profile_user_6.jpg', 'assets/images/photo_profile_user_6.jpg', 10, 2),
-    ItemFeed('Chloe', 'assets/images/photo_profile_user_7.jpg', 'assets/images/photo_profile_user_7.jpg', 10, 2),
-    ItemFeed('Hamilton', 'assets/images/photo_profile_user_19.jpg', 'assets/images/photo_profile_user_19.jpg', 10, 2),
-    ItemFeed('Davidson', 'assets/images/photo_profile_user_17.jpg', 'assets/images/photo_profile_user_17.jpg', 10, 2),
-    ItemFeed('Chayton', 'assets/images/photo_profile_user_12.jpg', 'assets/images/photo_profile_user_12.jpg', 10, 2),
-    ItemFeed('Elena', 'assets/images/photo_profile_user_8.jpg', 'assets/images/photo_profile_user_8.jpg', 10, 2),
-    ItemFeed('Alison', 'assets/images/photo_profile_user_14.jpg', 'assets/images/photo_profile_user_14.jpg', 10, 2),
-    ItemFeed('Alice', 'assets/images/photo_profile_user_1.jpg', 'assets/images/photo_profile_user_1.jpg', 10, 2),
-    ItemFeed('Ashton', 'assets/images/photo_profile_user_15.jpg', 'assets/images/photo_profile_user_15.jpg', 10, 2),
-    ItemFeed('Hugo', 'assets/images/photo_profile_user_18.jpg', 'assets/images/photo_profile_user_18.jpg', 10, 2),
-    ItemFeed('Jeremy', 'assets/images/photo_profile_user_20.jpg', 'assets/images/photo_profile_user_20.jpg', 10, 2),
+    ItemFeed('Grissham', 'assets/images/photo_profile_user_11.jpg', 'assets/images/photo_profile_user_11.jpg', 500179, 2013),
+    ItemFeed('Agatha', 'assets/images/photo_profile_user_2.jpg', 'assets/images/photo_profile_user_2.jpg', 22, 17),
+    ItemFeed('Emily', 'assets/images/photo_profile_user_10.jpg', 'assets/images/photo_profile_user_10.jpg', 311, 5),
+    ItemFeed('Amanda', 'assets/images/photo_profile_user_3.jpg', 'assets/images/photo_profile_user_3.jpg', 17, 1),
+    ItemFeed('Elizabeth', 'assets/images/photo_profile_user_9.jpg', 'assets/images/photo_profile_user_9.jpg', 41, 0),
+    ItemFeed('Aland', 'assets/images/photo_profile_user_13.jpg', 'assets/images/photo_profile_user_13.jpg', 9, 122),
+    ItemFeed('Daroll', 'assets/images/photo_profile_user_16.jpg', 'assets/images/photo_profile_user_16.jpg', 98, 15),
+    ItemFeed('Amelia', 'assets/images/photo_profile_user_4.jpg', 'assets/images/photo_profile_user_4.jpg', 29, 0),
+    ItemFeed('Belinda', 'assets/images/photo_profile_user_5.jpg', 'assets/images/photo_profile_user_5.jpg', 45, 1),
+    ItemFeed('Caroline', 'assets/images/photo_profile_user_6.jpg', 'assets/images/photo_profile_user_6.jpg', 101, 1820),
+    ItemFeed('Chloe', 'assets/images/photo_profile_user_7.jpg', 'assets/images/photo_profile_user_7.jpg', 4107, 121),
+    ItemFeed('Hamilton', 'assets/images/photo_profile_user_19.jpg', 'assets/images/photo_profile_user_19.jpg', 129, 1),
+    ItemFeed('Davidson', 'assets/images/photo_profile_user_17.jpg', 'assets/images/photo_profile_user_17.jpg', 10798, 2),
+    ItemFeed('Chayton', 'assets/images/photo_profile_user_12.jpg', 'assets/images/photo_profile_user_12.jpg', 771, 9),
+    ItemFeed('Elena', 'assets/images/photo_profile_user_8.jpg', 'assets/images/photo_profile_user_8.jpg', 51, 991),
+    ItemFeed('Alison', 'assets/images/photo_profile_user_14.jpg', 'assets/images/photo_profile_user_14.jpg', 37, 777),
+    ItemFeed('Alice', 'assets/images/photo_profile_user_1.jpg', 'assets/images/photo_profile_user_1.jpg', 1075, 1024),
+    ItemFeed('Ashton', 'assets/images/photo_profile_user_15.jpg', 'assets/images/photo_profile_user_15.jpg', 87, 0),
+    ItemFeed('Hugo', 'assets/images/photo_profile_user_18.jpg', 'assets/images/photo_profile_user_18.jpg', 991, 17),
+    ItemFeed('Jeremy', 'assets/images/photo_profile_user_20.jpg', 'assets/images/photo_profile_user_20.jpg', 451, 0),
   ];
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
       child: StaggeredGridView.countBuilder(
-        padding: EdgeInsets.only(top: 24),
         crossAxisCount: 3,
         itemCount: 20,
         itemBuilder: (BuildContext context, int index) {
           var itemFeed = listFeeds[index];
+          var numberFormat = NumberFormat('#,##0');
+          var strCountLike = numberFormat.format(itemFeed.countLike);
+          var strCountComment = numberFormat.format(itemFeed.countComment);
           return Column(
             children: [
               _buildWidgetPhotoPost(itemFeed),
@@ -835,12 +837,12 @@ class WidgetFeed extends StatelessWidget {
                     ),
                   ),
                   Icon(
-                    CupertinoIcons.heart,
+                    itemFeed.countLike % 3 != 0 ? CupertinoIcons.heart : CupertinoIcons.heart_fill,
                     color: Colors.white60,
                   ),
                   SizedBox(width: 4),
                   Text(
-                    '${itemFeed.countLike}',
+                    strCountLike,
                     style: TextStyle(
                       color: Colors.white60,
                       fontFamily: fontFamilyAvenir,
@@ -853,7 +855,7 @@ class WidgetFeed extends StatelessWidget {
                   ),
                   SizedBox(width: 4),
                   Text(
-                    '${itemFeed.countComment}',
+                    strCountComment,
                     style: TextStyle(
                       color: Colors.white60,
                       fontFamily: fontFamilyAvenir,
