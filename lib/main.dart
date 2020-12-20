@@ -556,7 +556,6 @@ class WidgetContent extends StatelessWidget {
   Widget _buildWidgetButtonAddPhoto() {
     return GestureDetector(
       onTap: () {
-        /// fitur add photo
       },
       child: Container(
         padding: const EdgeInsets.all(16),
